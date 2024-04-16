@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace WPF.Workshop
+namespace WPF.FileApp
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -12,6 +12,6 @@ namespace WPF.Workshop
             InitializeComponent();
 
             DataContext = new DirectoryStructureViewModel();
-        } 
+        }
     }
 }

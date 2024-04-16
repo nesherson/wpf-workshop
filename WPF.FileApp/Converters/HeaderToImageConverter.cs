@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Globalization;
-using System.IO;
 using System.Windows.Data;
 using System.Windows.Media.Imaging;
 
-namespace WPF.Workshop
+namespace WPF.FileApp
 {
     [ValueConversion(typeof(DirectoryItemType), typeof(BitmapImage))]
     public class HeaderToImageConverter : IValueConverter
@@ -25,7 +24,7 @@ namespace WPF.Workshop
                     break;
 
                 case DirectoryItemType.File:
-                    image = "folder-open.png";
+                    image = "file.png";
                     break;
             }
 

@@ -1,4 +1,4 @@
-﻿namespace WPF.Workshop
+﻿namespace WPF.FileApp
 {
     public class DirectoryItem
     {

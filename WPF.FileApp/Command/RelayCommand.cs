@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Windows.Input;
 
-namespace WPF.Workshop
+namespace WPF.FileApp
 {
     public class RelayCommand : ICommand
     {
         private Action _action;
+
         public RelayCommand(Action action)
         {
             _action = action;

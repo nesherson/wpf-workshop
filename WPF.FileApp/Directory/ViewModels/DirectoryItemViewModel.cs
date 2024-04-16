@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.ObjectModel;
-using System.Diagnostics;
+﻿using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows.Input;
 
-namespace WPF.Workshop
+namespace WPF.FileApp
 {
     public class DirectoryItemViewModel : BaseViewModel
     {
@@ -20,13 +18,15 @@ namespace WPF.Workshop
 
             ExpandCommand = new RelayCommand(Expand);
         }
+
         public DirectoryItemType Type { get; set; }
         public string FullPath { get; set; }
         public string Name => Type == DirectoryItemType.Drive ? FullPath : DirectoryStructure.GetFileFolderName(FullPath);
         public ObservableCollection<DirectoryItemViewModel> Children { get; set; }
         public bool CanExpand => Type != DirectoryItemType.File;
-        public bool IsExpanded 
-        { 
+
+        public bool IsExpanded
+        {
             get => Children?.Count(x => x != null) > 0;
             set
             {
@@ -56,7 +56,6 @@ namespace WPF.Workshop
                 DirectoryStructure
                 .GetDirectoryContent(FullPath)
                 .Select(x => new DirectoryItemViewModel(x.FullPath, x.Type)));
-
         }
     }
 }

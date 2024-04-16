@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WPF.Workshop
+namespace WPF.FileApp
 {
     public class DirectoryStructureViewModel : BaseViewModel
     {
@@ -15,6 +15,7 @@ namespace WPF.Workshop
                 .GetLogicalDrives()
                 .Select(x => new DirectoryItemViewModel(x.FullPath, DirectoryItemType.Drive)));
         }
+
         public ObservableCollection<DirectoryItemViewModel> Items { get; set; }
     }
 }
