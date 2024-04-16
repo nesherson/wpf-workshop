@@ -7,6 +7,9 @@
         mc:Ignorable="d"
         Title="WPF Basics" Height="800" Width="400"
         Loaded="Window_Loaded">
+    <Window.Resources>
+        <local:HeaderToImageConverter x:Key="HeaderToImageConverter" />
+    </Window.Resources>
     <StackPanel>
         <TreeView x:Name="FolderView">
             <TreeView.Resources>
@@ -15,7 +18,15 @@
                         <Setter.Value>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal">
-                                    <Image Width="20" Height="20" Margin="3" Source="Images/drive.png" />
+                                    <Image 
+                                        Width="20" 
+                                        Height="20" 
+                                        Margin="3" 
+                                        Source="{Binding 
+                                            RelativeSource={RelativeSource Mode=FindAncestor,
+                                            AncestorType={x:Type TreeViewItem}},
+                                            Path=Tag,
+                                            Converter={StaticResource HeaderToImageConverter}}" />
                                     <TextBlock VerticalAlignment="Center" Text="{Binding}" />
                                 </StackPanel>
                             </DataTemplate>
