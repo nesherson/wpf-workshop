@@ -10,15 +10,21 @@
         <local:HeaderToImageConverter x:Key="HeaderToImageConverter" />
     </Window.Resources>
     <StackPanel>
-        <TreeView x:Name="FolderView">
+        <TreeView x:Name="FolderView" ItemsSource="{Binding Items}">
             <TreeView.ItemContainerStyle>
                 <Style TargetType="{x:Type TreeViewItem}">
                     <Setter Property="IsExpanded" Value="{Binding IsExpanded, Mode=TwoWay}" />
                 </Style>
             </TreeView.ItemContainerStyle>
             <TreeView.ItemTemplate>
-                <HierarchicalDataTemplate>
-                    
+                <HierarchicalDataTemplate ItemsSource="{Binding Children}">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Width="20"
+                               Margin="3"
+                               Source="{Binding Type,
+                               Converter={StaticResource HeaderToImageConverter}}" />
+                        <TextBlock VerticalAlignment="Center" Text="{Binding Name}" />
+                    </StackPanel>
                 </HierarchicalDataTemplate>
             </TreeView.ItemTemplate>
         </TreeView>

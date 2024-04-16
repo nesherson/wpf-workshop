@@ -6,23 +6,28 @@ using System.Windows.Media.Imaging;
 
 namespace WPF.Workshop
 {
+    [ValueConversion(typeof(DirectoryItemType), typeof(BitmapImage))]
     public class HeaderToImageConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            var path = value as string;
+            var type = (DirectoryItemType)value;
+            var image = string.Empty;
 
-            if (string.IsNullOrEmpty(path))
-                return null;
+            switch (type)
+            {
+                case DirectoryItemType.Drive:
+                    image = "drive.png";
+                    break;
 
-            var name = DirectoryStructure.GetFileFolderName(path);
-            var image = "file.png";
+                case DirectoryItemType.Folder:
+                    image = "folder-closed.png";
+                    break;
 
-            if (string.IsNullOrEmpty(name))
-                image = "drive.png";
-            else if (new FileInfo(path).Attributes.HasFlag(FileAttributes.Directory))
-                image = "folder-closed.png";
-
+                case DirectoryItemType.File:
+                    image = "folder-open.png";
+                    break;
+            }
 
             return new BitmapImage(new Uri($"pack://application:,,,/Images/{image}"));
         }
