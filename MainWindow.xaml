@@ -7,16 +7,16 @@
         mc:Ignorable="d"
         Title="WPF Basics" Height="800" Width="400"
         Loaded="Window_Loaded">
-    <Grid>
+    <StackPanel>
         <TreeView x:Name="FolderView">
             <TreeView.Resources>
                 <Style TargetType="{x:Type TreeViewItem}">
-                    <Setter Property="Header">
+                    <Setter Property="HeaderTemplate">
                         <Setter.Value>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal">
-                                    <Image Width="20" Margin="3" Source="Images/drive.png" />
-                                    <TextBlock VerticalAlignment="Center">Some files</TextBlock>
+                                    <Image Width="20" Height="20" Margin="3" Source="Images/drive.png" />
+                                    <TextBlock VerticalAlignment="Center" Text="{Binding}" />
                                 </StackPanel>
                             </DataTemplate>
                         </Setter.Value>
@@ -24,5 +24,5 @@
                 </Style>
             </TreeView.Resources>
         </TreeView>
-    </Grid>
+    </StackPanel>
 </Window>

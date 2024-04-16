@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.IO;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace WPF.Workshop
@@ -15,6 +16,12 @@ namespace WPF.Workshop
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            foreach (var driveName in Directory.GetLogicalDrives())
+            {
+                var treeViewItem = new TreeViewItem();
+                treeViewItem.Header = driveName;
+                FolderView.Items.Add(treeViewItem);
+            }
         }
     }
 }
