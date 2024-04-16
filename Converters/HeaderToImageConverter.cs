@@ -15,7 +15,7 @@ namespace WPF.Workshop
             if (string.IsNullOrEmpty(path))
                 return null;
 
-            var name = MainWindow.GetFileFolderName(path);
+            var name = DirectoryStructure.GetFileFolderName(path);
             var image = "file.png";
 
             if (string.IsNullOrEmpty(name))
