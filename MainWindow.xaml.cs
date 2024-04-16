@@ -10,6 +10,8 @@ namespace WPF.Workshop
         public MainWindow()
         {
             InitializeComponent();
+
+            DataContext = new DirectoryStructureViewModel();
         } 
     }
 }

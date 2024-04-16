@@ -15,6 +15,7 @@
     <Content Include="Images\drive.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <PackageReference Include="PropertyChanged.Fody" Version="4.1.0" />
     <Resource Include="Images\file.png" />
     <Resource Include="Images\folder-closed.png" />
     <Resource Include="Images\folder-open.png" />
