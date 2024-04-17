@@ -9,6 +9,8 @@ namespace WPF.Tesetto.Word
         public MainWindow()
         {
             InitializeComponent();
+
+            DataContext = new WindowViewModel(this);
         }
     }
 }
