@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Input;
 
-namespace WPF.FileApp
+namespace WPF.Tesetto.Word
 {
     public class RelayCommand : ICommand
     {
