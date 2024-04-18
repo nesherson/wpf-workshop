@@ -10,8 +10,8 @@ namespace WPF.Tesetto.Word
     public class WindowViewModel : BaseViewModel
     {
         private Window _window;
-        private int _outerMarginSize;
-        private int _windowRadius;
+        private int _outerMarginSize = 10;
+        private int _windowRadius = 10;
         public WindowViewModel(Window window)
         {
             _window = window;
@@ -24,8 +24,12 @@ namespace WPF.Tesetto.Word
             MenuCommand = new RelayCommand(Menu);
 
             _window.StateChanged += Window_StateChanged;
+
+            var windowResizer = new WindowResizer(_window);
         }
-   
+
+        public double WindowMinimumWidth { get; set; } = 400;
+        public double WindowMinimumHeight { get; set; } = 400;
         public int ResizeBorder { get; set; } = 6;
 
         public int OuterMarginSize
@@ -53,19 +57,17 @@ namespace WPF.Tesetto.Word
         }
 
         public Thickness ResizeBorderThickness => new(ResizeBorder + OuterMarginSize);
-
         public Thickness OuterMarginSizeThickness => new(OuterMarginSize);
-
         public CornerRadius WindowCornerRadius => new(WindowRadius);
-
         public int TitleHeight { get; set; } = 40;
-
         public GridLength TitleHeightGridLength => new(TitleHeight + ResizeBorder);
+        public Thickness InnerContentPadding => new(ResizeBorder);
 
         public ICommand MenuCommand { get; set; }
         public ICommand MinimizeCommand { get; set; }
         public ICommand MaximizeCommand { get; set; }
         public ICommand CloseCommand { get; set; }
+
 
         private void Window_StateChanged(object? sender, System.EventArgs e)
         {
