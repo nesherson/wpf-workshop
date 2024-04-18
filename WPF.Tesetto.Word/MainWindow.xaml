@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPF.Tesetto.Word" 
         mc:Ignorable="d"
         x:Name="AppWindow"
         WindowStyle="None"
@@ -10,9 +11,61 @@
         WindowStartupLocation="CenterScreen"
         Icon="Images/Logo/logo-small.png"
         Title="My app" Height="450" Width="800">
+    <Window.Resources>
+        <Style TargetType="{x:Type local:MainWindow}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Window}">
+                        <Border Padding="{Binding OuterMarginSizeThickness, FallbackValue=10}">
+                            <Grid>
+                                <Border 
+                                    CornerRadius="{Binding WindowCornerRadius}" 
+                                    Background="{StaticResource ForegroundLightBrush}">
+                                    <Border.Effect>
+                                        <DropShadowEffect ShadowDepth="0" Opacity="0.2" />
+                                    </Border.Effect>
+                                </Border>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="{Binding TitleHeightGridLength}"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid Grid.Column="0" Panel.ZIndex="1">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        
+                                        <Button Style="{StaticResource SystemIconButton}" Command="{Binding MenuCommand}">
+                                            <Image Source="/Images/Logo/logo-small.png" />
+                                        </Button>
+                                        
+                                        <Viewbox Grid.Column="1" Margin="0">
+                                            <TextBlock Style="{StaticResource HeaderText}" Text="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Title}" />
+                                        </Viewbox>
+                                        
+                                        <StackPanel Grid.Column="2" Orientation="Horizontal">
+                                            <Button Style="{StaticResource WindowControlButton}" Content="_"/>
+                                            <Button Style="{StaticResource WindowControlButton}" Content="[ ]"/>
+                                            <Button Style="{StaticResource WindowCloseButton}" Content="X"/>
+                                        </StackPanel>
+                                    </Grid>
+                                    
+                                </Grid>
+                            </Grid>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
     <WindowChrome.WindowChrome>
-        <WindowChrome ResizeBorderThickness="{Binding ResizeBorderThickness}"/>
+        <WindowChrome 
+            ResizeBorderThickness="{Binding ResizeBorderThickness}" 
+            CaptionHeight="{Binding TitleHeight}"
+            GlassFrameThickness="0"
+            CornerRadius="0"/>
     </WindowChrome.WindowChrome>
-    <Grid>
-    </Grid>
 </Window>
