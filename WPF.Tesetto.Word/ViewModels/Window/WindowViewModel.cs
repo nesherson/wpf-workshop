@@ -31,8 +31,8 @@ namespace WPF.Tesetto.Word
             var windowResizer = new WindowResizer(_window);
         }
 
-        public double WindowMinimumWidth { get; set; } = 400;
-        public double WindowMinimumHeight { get; set; } = 400;
+        public double WindowMinimumWidth { get; set; } = 820;
+        public double WindowMinimumHeight { get; set; } = 560;
         public int ResizeBorder => Borderless ? 0 : 6;
         public bool Borderless { get { return (_window.WindowState == WindowState.Maximized || _dockPosition != WindowDockPosition.Undocked); } }
 
