@@ -9,6 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Images\Backgrounds\emoji-background.png" />
     <None Remove="Images\Logo\logo-small.png" />
   </ItemGroup>
 
@@ -21,6 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Images\Backgrounds\emoji-background.png" />
     <Resource Include="Images\Logo\logo-small.png" />
   </ItemGroup>
 
