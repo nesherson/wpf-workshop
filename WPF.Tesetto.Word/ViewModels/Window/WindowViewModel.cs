@@ -1,6 +1,7 @@
 ﻿using PropertyChanged;
 using System;
 using System.Windows;
+using System.Windows.Automation;
 using System.Windows.Controls;
 using System.Windows.Input;
 
@@ -12,6 +13,8 @@ namespace WPF.Tesetto.Word
         private Window _window;
         private int _outerMarginSize = 10;
         private int _windowRadius = 10;
+        private WindowDockPosition _dockPosition = WindowDockPosition.Undocked;
+
         public WindowViewModel(Window window)
         {
             _window = window;
@@ -30,7 +33,8 @@ namespace WPF.Tesetto.Word
 
         public double WindowMinimumWidth { get; set; } = 400;
         public double WindowMinimumHeight { get; set; } = 400;
-        public int ResizeBorder { get; set; } = 6;
+        public int ResizeBorder => Borderless ? 0 : 6;
+        public bool Borderless { get { return (_window.WindowState == WindowState.Maximized || _dockPosition != WindowDockPosition.Undocked); } }
 
         public int OuterMarginSize
         {
@@ -61,7 +65,8 @@ namespace WPF.Tesetto.Word
         public CornerRadius WindowCornerRadius => new(WindowRadius);
         public int TitleHeight { get; set; } = 40;
         public GridLength TitleHeightGridLength => new(TitleHeight + ResizeBorder);
-        public Thickness InnerContentPadding => new(ResizeBorder);
+        public Thickness InnerContentPadding { get; set; } = new(0);
+        public ApplicationPage CurrentPage { get; set; } = ApplicationPage.Login;
 
         public ICommand MenuCommand { get; set; }
         public ICommand MinimizeCommand { get; set; }
@@ -71,6 +76,7 @@ namespace WPF.Tesetto.Word
 
         private void Window_StateChanged(object? sender, System.EventArgs e)
         {
+            OnPropertyChanged(nameof(Borderless));
             OnPropertyChanged(nameof(ResizeBorderThickness));
             OnPropertyChanged(nameof(OuterMarginSize));
             OnPropertyChanged(nameof(OuterMarginSizeThickness));

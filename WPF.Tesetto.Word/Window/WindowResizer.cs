@@ -5,6 +5,22 @@ using System.Windows.Interop;
 
 namespace WPF.Tesetto.Word
 {
+    public enum WindowDockPosition
+    {
+        /// <summary>
+        /// Not docked
+        /// </summary>
+        Undocked,
+        /// <summary>
+        /// Docked to the left of the screen
+        /// </summary>
+        Left,
+        /// <summary>
+        /// Docked to the right of the screen
+        /// </summary>
+        Right,
+    }
+
     /// <summary>
     /// Fixes the issue with Windows of Style <see cref="WindowStyle.None"/> covering the taskbar
     /// </summary>
