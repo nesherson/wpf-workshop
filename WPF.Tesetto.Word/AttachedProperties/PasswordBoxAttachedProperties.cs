@@ -15,7 +15,23 @@ namespace WPF.Tesetto.Word
 
         private static void OnMonitorPasswordChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            throw new NotImplementedException();
+            var passwordBox = d as PasswordBox;
+
+            if (passwordBox == null)
+                return;
+
+            passwordBox.PasswordChanged -= PasswordBox_PasswordChanged;
+
+            if ((bool)e.NewValue)
+            {
+                SetHasText(passwordBox);
+                passwordBox.PasswordChanged += PasswordBox_PasswordChanged;
+            }
+        }
+
+        private static void PasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            SetHasText((PasswordBox)sender);
         }
 
         public static void SetMonitorPassword(PasswordBox element, bool value)
