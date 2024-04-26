@@ -1,21 +1,24 @@
-﻿using System;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 
 namespace WPF.Tesetto.Word
 {
-    public class PasswordBoxAttachedProperties
+    public class HasTextProperty : BaseAttachedProperty<HasTextProperty, bool>
     {
-        public static readonly DependencyProperty MonitorPasswordProperty = DependencyProperty
-            .RegisterAttached(
-            "MonitorPassword",
-            typeof(bool),
-            typeof(PasswordBoxAttachedProperties),
-            new PropertyMetadata(false, OnMonitorPasswordChanged));
-
-        private static void OnMonitorPasswordChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        public static void SetValue(DependencyObject sender)
         {
-            var passwordBox = d as PasswordBox;
+            if (sender is not PasswordBox passwordBox)
+                return;
+
+            SetValue(passwordBox, passwordBox.SecurePassword.Length > 0);
+        }
+    }
+
+    public class MonitorPasswordProperty : BaseAttachedProperty<MonitorPasswordProperty, bool>
+    {
+        public override void OnValueChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e)
+        {
+            var passwordBox = (sender as PasswordBox);
 
             if (passwordBox == null)
                 return;
@@ -24,41 +27,15 @@ namespace WPF.Tesetto.Word
 
             if ((bool)e.NewValue)
             {
-                SetHasText(passwordBox);
+                HasTextProperty.SetValue(passwordBox);
+
                 passwordBox.PasswordChanged += PasswordBox_PasswordChanged;
             }
         }
 
-        private static void PasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
+        private void PasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
         {
-            SetHasText((PasswordBox)sender);
-        }
-
-        public static void SetMonitorPassword(PasswordBox element, bool value)
-        {
-            element.SetValue(MonitorPasswordProperty, value);
-        }
-
-        public static bool GetMonitorPassword(PasswordBox element)
-        {
-            return (bool)element.GetValue(MonitorPasswordProperty);
-        }
-
-        public static readonly DependencyProperty HasTextProperty = DependencyProperty
-            .RegisterAttached(
-            "HasText",
-            typeof(bool),
-            typeof(PasswordBoxAttachedProperties),
-            new PropertyMetadata(false));
-
-        private static void SetHasText(PasswordBox element)
-        {
-            element.SetValue(HasTextProperty, element.SecurePassword.Length > 0);
-        }
-
-        public static bool GetHasText(PasswordBox element)
-        {
-            return (bool)element.GetValue(HasTextProperty);
+            HasTextProperty.SetValue((PasswordBox)sender);
         }
     }
 }
