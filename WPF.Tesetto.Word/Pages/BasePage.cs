@@ -34,22 +34,7 @@ namespace WPF.Tesetto.Word
             switch (PageLoadAnimation)
             {
                 case PageAnimation.SlideAndFadeInFromRight:
-                    var sb = new Storyboard();
-                    var slideAnimation = new ThicknessAnimation()
-                    {
-                        Duration = TimeSpan.FromSeconds(SlideSeconds),
-                        From = new Thickness(WindowWidth, 0, -WindowWidth, 0),
-                        To = new Thickness(0),
-                        DecelerationRatio = 0.9f
-                    };
-                    Storyboard.SetTargetProperty(slideAnimation, new PropertyPath("Margin"));
-                    sb.Children.Add(slideAnimation);
-
-                    sb.Begin();
-
-                    Visibility = Visibility.Visible;
-
-                    await Task.Delay((int)SlideSeconds * 1000);
+                    await this.SlideAndFadeInFromRight(SlideSeconds);
                     break;
             }
         }
