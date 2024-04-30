@@ -1,12 +1,10 @@
-﻿using System.Windows.Controls;
+﻿using System.Threading.Tasks;
 using System.Windows;
-using System;
-using System.Threading.Tasks;
-using System.Windows.Media.Animation;
+using System.Windows.Controls;
 
 namespace WPF.Tesetto.Word
 {
-    public class BasePage<TViewModel> : Page
+	public class BasePage<TViewModel> : Page
         where TViewModel : BaseViewModel, new()
     {
         private TViewModel _viewModel;
