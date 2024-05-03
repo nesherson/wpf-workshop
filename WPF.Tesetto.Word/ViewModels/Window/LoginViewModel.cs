@@ -5,7 +5,7 @@ using System.Windows.Input;
 
 namespace WPF.Tesetto.Word
 {
-	[AddINotifyPropertyChangedInterface]
+    [AddINotifyPropertyChangedInterface]
     public class LoginViewModel : BaseViewModel
     {
         public LoginViewModel()
@@ -14,12 +14,18 @@ namespace WPF.Tesetto.Word
         }
 
         public string Email { get; set; }
+        public bool LoginIsRunning { get; set; }
 
         public ICommand LoginCommand { get; set; }
 
         public async Task Login(object parameter)
         {
-            await Task.Delay(500);
+            await RunCommand(() => LoginIsRunning, async () =>
+            {
+                await Task.Delay(500);
+                var email = Email;
+                var password = (parameter as IHavePassword).SecurePassword.Unsecure();
+            });
         }
     }
 }
