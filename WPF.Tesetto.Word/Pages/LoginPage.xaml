@@ -48,6 +48,7 @@
                             <PasswordBox x:Name="PasswordText" Tag="Password" Margin="0 0 0 20" />
                             <Button
                                 Content="Login"
+                                local:IsBusyProperty.Value="{Binding LoginIsRunning}"
                                 HorizontalAlignment="Center"
                                 Command="{Binding LoginCommand}"
                                 CommandParameter="{Binding ElementName=Page}" />

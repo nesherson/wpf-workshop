@@ -22,7 +22,7 @@ namespace WPF.Tesetto.Word
         {
             await RunCommand(() => LoginIsRunning, async () =>
             {
-                await Task.Delay(500);
+                await Task.Delay(2000);
                 var email = Email;
                 var password = (parameter as IHavePassword).SecurePassword.Unsecure();
             });
