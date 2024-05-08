@@ -12,7 +12,9 @@ namespace WPF.Tesetto.Word
             {
                 case ApplicationPage.Login:
                     return new LoginPage();
-                default:
+				case ApplicationPage.Chat:
+					return new ChatPage();
+				default:
                     Debugger.Break();
                     return null;
 
