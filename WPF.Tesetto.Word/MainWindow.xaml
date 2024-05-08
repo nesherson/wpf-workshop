@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:svgc="http://sharpvectors.codeplex.com/svgc/"
         xmlns:local="clr-namespace:WPF.Tesetto.Word" 
         mc:Ignorable="d"
         x:Name="AppWindow"
@@ -80,7 +81,16 @@
             GlassFrameThickness="0"
             CornerRadius="0"/>
     </WindowChrome.WindowChrome>
-    <Grid Background="{StaticResource ForegroundLightBrush}">
-        <Frame x:Name="MainFrame" Content="{Binding CurrentPage, Converter={local:ApplicationPageValueConverter}}" />
-    </Grid>
+    <Border Background="{StaticResource WordBlueBrush}">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="300"/>
+                <ColumnDefinition Width="5*"/>
+            </Grid.ColumnDefinitions>
+            <Frame Grid.Column="1" x:Name="MainFrame" Content="{Binding CurrentPage, Converter={local:ApplicationPageValueConverter}}" />
+            <local:SideMenuControl>
+                <Button Content="Test" />
+            </local:SideMenuControl>
+        </Grid>
+    </Border>
 </Window>
