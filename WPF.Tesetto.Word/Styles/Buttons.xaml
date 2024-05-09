@@ -85,6 +85,7 @@
                                        SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
                                        VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
                             <TextBlock Text="Loading..."
+                                       FontFamily="{StaticResource FontAwesome}"
                                        Visibility="{TemplateBinding local:IsBusyProperty.Value, Converter={local:BooleanToVisibilityConverter}, ConverterParameter=True}"
                                        HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                        VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
