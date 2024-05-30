@@ -34,7 +34,8 @@ namespace WPF.Tesetto.Word
         public double WindowMinimumWidth { get; set; } = 820;
         public double WindowMinimumHeight { get; set; } = 560;
         public int ResizeBorder => Borderless ? 0 : 6;
-        public bool Borderless { get { return (_window.WindowState == WindowState.Maximized || _dockPosition != WindowDockPosition.Undocked); } }
+        public bool Borderless
+        { get { return (_window.WindowState == WindowState.Maximized || _dockPosition != WindowDockPosition.Undocked); } }
 
         public int OuterMarginSize
         {
@@ -66,13 +67,12 @@ namespace WPF.Tesetto.Word
         public int TitleHeight { get; set; } = 40;
         public GridLength TitleHeightGridLength => new(TitleHeight + ResizeBorder);
         public Thickness InnerContentPadding { get; set; } = new(0);
-        public ApplicationPage CurrentPage { get; set; } = ApplicationPage.Login;
+        public ApplicationPage CurrentPage { get; set; } = ApplicationPage.Chat;
 
         public ICommand MenuCommand { get; set; }
         public ICommand MinimizeCommand { get; set; }
         public ICommand MaximizeCommand { get; set; }
         public ICommand CloseCommand { get; set; }
-
 
         private void Window_StateChanged(object? sender, System.EventArgs e)
         {
