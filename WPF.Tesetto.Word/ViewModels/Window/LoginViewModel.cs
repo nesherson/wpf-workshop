@@ -1,6 +1,7 @@
 ﻿using PropertyChanged;
 using System.Security;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace WPF.Tesetto.Word
@@ -10,15 +11,17 @@ namespace WPF.Tesetto.Word
     {
         public LoginViewModel()
         {
-            LoginCommand = new RelayParameterizedCommand(async (parameter) => await Login(parameter));
+            LoginCommand = new RelayParameterizedCommand(async (parameter) => await LoginAsync(parameter));
+            RegisterCommand = new RelayCommand(async () => await RegisterAsync());
         }
 
         public string Email { get; set; }
         public bool LoginIsRunning { get; set; }
 
         public ICommand LoginCommand { get; set; }
+        public ICommand RegisterCommand { get; set; }
 
-        public async Task Login(object parameter)
+        public async Task LoginAsync(object parameter)
         {
             await RunCommand(() => LoginIsRunning, async () =>
             {
@@ -26,6 +29,11 @@ namespace WPF.Tesetto.Word
                 var email = Email;
                 var password = (parameter as IHavePassword).SecurePassword.Unsecure();
             });
+        }
+
+        public async Task RegisterAsync()
+        {
+            ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.Register;
         }
     }
 }
