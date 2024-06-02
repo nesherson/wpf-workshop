@@ -5,7 +5,9 @@ VisualStudioVersion = 17.5.33530.505
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WPF.FileApp", "WPF.FileApp\WPF.FileApp.csproj", "{C113D0C7-DB40-426E-AC29-27E4271E581C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPF.Tesetto.Word", "WPF.Tesetto.Word\WPF.Tesetto.Word.csproj", "{DCE304B5-6F8E-424E-A990-B090B25092E8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WPF.Tesetto.Word", "WPF.Tesetto.Word\WPF.Tesetto.Word.csproj", "{DCE304B5-6F8E-424E-A990-B090B25092E8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPF.Tesetto.Word.Core", "WPF.Tesetto.Word.Core\WPF.Tesetto.Word.Core.csproj", "{43D06385-2B8B-498E-9CBB-C18B93CB8815}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{DCE304B5-6F8E-424E-A990-B090B25092E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DCE304B5-6F8E-424E-A990-B090B25092E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DCE304B5-6F8E-424E-A990-B090B25092E8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{43D06385-2B8B-498E-9CBB-C18B93CB8815}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{43D06385-2B8B-498E-9CBB-C18B93CB8815}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{43D06385-2B8B-498E-9CBB-C18B93CB8815}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{43D06385-2B8B-498E-9CBB-C18B93CB8815}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
