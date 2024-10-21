@@ -4,7 +4,7 @@ using System.Windows.Controls;
 
 namespace WPF.Tesetto.Word
 {
-	public class BasePage<TViewModel> : Page
+    public class BasePage<TViewModel> : Page
         where TViewModel : BaseViewModel, new()
     {
         private TViewModel _viewModel;

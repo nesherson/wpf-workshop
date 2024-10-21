@@ -1,7 +1,6 @@
-﻿using System;
-using System.Windows.Input;
+﻿using System.Windows.Input;
 
-namespace WPF.Tesetto.Word
+namespace WPF.Tesetto.Word.Core
 {
     public class RelayCommand : ICommand
     {

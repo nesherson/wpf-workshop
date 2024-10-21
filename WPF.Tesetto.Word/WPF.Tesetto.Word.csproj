@@ -24,6 +24,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\WPF.Tesetto.Word.Core\WPF.Tesetto.Word.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Resource Include="Icons\chat.svg" />
     <Resource Include="Images\Backgrounds\emoji-background.png" />
     <Resource Include="Images\Logo\logo-small.png" />

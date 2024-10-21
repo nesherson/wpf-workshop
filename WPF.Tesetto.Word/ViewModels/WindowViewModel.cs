@@ -1,9 +1,7 @@
 ﻿using PropertyChanged;
-using System;
 using System.Windows;
-using System.Windows.Automation;
-using System.Windows.Controls;
 using System.Windows.Input;
+using WPF.Tesetto.Word.Core;
 
 namespace WPF.Tesetto.Word
 {

@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using Microsoft.CSharp;
-
-namespace WPF.Tesetto.Word
+﻿namespace WPF.Tesetto.Word.Core
 {
     public class ChatListViewModel : BaseViewModel
     {

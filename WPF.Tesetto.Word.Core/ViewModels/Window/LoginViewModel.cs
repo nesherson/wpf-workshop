@@ -1,10 +1,7 @@
 ﻿using PropertyChanged;
-using System.Security;
-using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Input;
 
-namespace WPF.Tesetto.Word
+namespace WPF.Tesetto.Word.Core
 {
     [AddINotifyPropertyChangedInterface]
     public class LoginViewModel : BaseViewModel
@@ -33,7 +30,7 @@ namespace WPF.Tesetto.Word
 
         public async Task RegisterAsync()
         {
-            ((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.Register;
+            //((WindowViewModel)((MainWindow)Application.Current.MainWindow).DataContext).CurrentPage = ApplicationPage.Register;
         }
     }
 }

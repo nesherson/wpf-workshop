@@ -1,4 +1,4 @@
-﻿namespace WPF.Tesetto.Word
+﻿namespace WPF.Tesetto.Word.Core
 {
     public class ChatListItemViewModel : BaseViewModel
     {

@@ -1,6 +1,6 @@
 ﻿using System.Security;
 
-namespace WPF.Tesetto.Word
+namespace WPF.Tesetto.Word.Core
 {
     public interface IHavePassword
     {

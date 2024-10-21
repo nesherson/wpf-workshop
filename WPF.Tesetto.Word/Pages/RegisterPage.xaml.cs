@@ -1,4 +1,5 @@
 ﻿using System.Security;
+using WPF.Tesetto.Word.Core;
 
 namespace WPF.Tesetto.Word
 {

@@ -1,9 +1,7 @@
-﻿using System;
-using System.IO.Packaging;
-using System.Linq.Expressions;
+﻿using System.Linq.Expressions;
 using System.Reflection;
 
-namespace WPF.Tesetto.Word
+namespace WPF.Tesetto.Word.Core
 {
     public static class ExpressionHelpers
     {

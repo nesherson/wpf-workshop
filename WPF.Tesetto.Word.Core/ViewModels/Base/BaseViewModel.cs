@@ -1,9 +1,7 @@
 ﻿using PropertyChanged;
-using System;
 using System.ComponentModel;
 using System.Linq.Expressions;
-using System.Reflection;
-using System.Threading.Tasks;
+using WPF.Tesetto.Word.Core;
 
 namespace WPF.Tesetto.Word
 {
