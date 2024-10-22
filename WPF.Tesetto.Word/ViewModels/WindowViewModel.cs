@@ -66,8 +66,6 @@ namespace WPF.Tesetto.Word
         public int TitleHeight { get; set; } = 40;
         public GridLength TitleHeightGridLength => new(TitleHeight + ResizeBorder);
         public Thickness InnerContentPadding { get; set; } = new(0);
-        public ApplicationPage CurrentPage { get; set; } = ApplicationPage.Login;
-
         public ICommand MenuCommand { get; set; }
         public ICommand MinimizeCommand { get; set; }
         public ICommand MaximizeCommand { get; set; }
