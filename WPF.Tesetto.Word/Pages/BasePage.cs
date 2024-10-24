@@ -4,24 +4,92 @@ using System.Windows.Controls;
 
 namespace WPF.Tesetto.Word
 {
-    public class BasePage<TViewModel> : Page
-        where TViewModel : BaseViewModel, new()
+    public class BasePage : Page
     {
-        private TViewModel _viewModel;
+        #region Constructor
 
         public BasePage()
         {
             if (PageLoadAnimation != PageAnimation.None)
                 Visibility = Visibility.Collapsed;
 
-            ViewModel = new TViewModel();
-
             Loaded += BasePage_Loaded;
         }
 
+        #endregion Constructor
+
+        #region Public Propeties
+
         public PageAnimation PageLoadAnimation { get; set; } = PageAnimation.SlideAndFadeInFromRight;
         public PageAnimation PageUnloadAnimation { get; set; } = PageAnimation.SlideAndFadeOutToLeft;
-        public float SlideSeconds { get; set; } = 0.8f;
+        public float SlideSeconds { get; set; } = 0.4f;
+        public bool ShouldAnimateOut { get; set; }
+
+        #endregion Public Propeties
+
+        #region Animate In/Out
+
+        public async Task AnimateInAsync()
+        {
+            if (PageLoadAnimation == PageAnimation.None)
+                return;
+
+            switch (PageLoadAnimation)
+            {
+                case PageAnimation.SlideAndFadeInFromRight:
+                    await this.SlideAndFadeInFromRightAsync(SlideSeconds);
+                    break;
+            }
+        }
+
+        public async Task AnimateOutAsync()
+        {
+            if (PageLoadAnimation == PageAnimation.None)
+                return;
+
+            switch (PageLoadAnimation)
+            {
+                case PageAnimation.SlideAndFadeOutToLeft:
+                    await this.SlideAndFadeOutToLeftAsync(SlideSeconds);
+                    break;
+            }
+        }
+
+        private async void BasePage_Loaded(object sender, System.Windows.RoutedEventArgs e)
+        {
+            if (ShouldAnimateOut)
+            {
+                await AnimateOutAsync();
+                ShouldAnimateOut = false;
+            }
+            else
+            {
+            }
+            await AnimateInAsync();
+        }
+
+        #endregion Animate In/Out
+    }
+
+    public class BasePage<TViewModel> : BasePage
+        where TViewModel : BaseViewModel, new()
+    {
+        #region Private Members
+
+        private TViewModel _viewModel;
+
+        #endregion Private Members
+
+        #region Constructor
+
+        public BasePage() : base()
+        {
+            ViewModel = new TViewModel();
+        }
+
+        #endregion Constructor
+
+        #region Public Properties
 
         public TViewModel ViewModel
         {
@@ -36,22 +104,6 @@ namespace WPF.Tesetto.Word
             }
         }
 
-        private async void BasePage_Loaded(object sender, System.Windows.RoutedEventArgs e)
-        {
-            await AnimateIn();
-        }
-
-        public async Task AnimateIn()
-        {
-            if (PageLoadAnimation == PageAnimation.None)
-                return;
-
-            switch (PageLoadAnimation)
-            {
-                case PageAnimation.SlideAndFadeInFromRight:
-                    await this.SlideAndFadeInFromRight(SlideSeconds);
-                    break;
-            }
-        }
+        #endregion Public Properties
     }
 }

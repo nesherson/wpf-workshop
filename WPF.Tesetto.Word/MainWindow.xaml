@@ -87,10 +87,10 @@
                 <ColumnDefinition Width="auto" />
                 <ColumnDefinition Width="5*" />
             </Grid.ColumnDefinitions>
-            <Frame
+            <local:PageHost
                 Grid.Column="1"
-                x:Name="MainFrame"
-                Content="{Binding ApplicationViewModel.CurrentPage, Source={x:Static local:ViewModelLocator.Instance}, Converter={local:ApplicationPageValueConverter}}" />
+                DataContext="{Binding ApplicationViewModel.CurrentPage, Source={x:Static local:ViewModelLocator.Instance}, Converter={local:ApplicationPageValueConverter}}"
+                CurrentPage="{Binding}" />
             <local:SideMenuControl Width="300" local:AnimateSlideInFromLeftProperty.Value="{Binding ApplicationViewModel.SideMenuVisible, Source={x:Static local:ViewModelLocator.Instance}}">
                 <local:ChatListControl />
             </local:SideMenuControl>
