@@ -44,10 +44,10 @@ namespace WPF.Tesetto.Word
 
         public async Task AnimateOutAsync()
         {
-            if (PageLoadAnimation == PageAnimation.None)
+            if (PageUnloadAnimation == PageAnimation.None)
                 return;
 
-            switch (PageLoadAnimation)
+            switch (PageUnloadAnimation)
             {
                 case PageAnimation.SlideAndFadeOutToLeft:
                     await this.SlideAndFadeOutToLeftAsync(SlideSeconds);
@@ -64,8 +64,8 @@ namespace WPF.Tesetto.Word
             }
             else
             {
+                await AnimateInAsync();
             }
-            await AnimateInAsync();
         }
 
         #endregion Animate In/Out

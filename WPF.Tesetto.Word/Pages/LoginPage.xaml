@@ -12,16 +12,8 @@
       d:DesignHeight="520" d:DesignWidth="800"
       Title="Login">
 
-    <Border Background="{StaticResource WordBlueBrush}">
+    <Border>
         <Grid>
-            <Grid.Background>
-                <ImageBrush
-                     TileMode="Tile"
-                     Viewport="0 0 500 500"
-                     ViewportUnits="Absolute"
-                     ImageSource="/Images/Backgrounds/emoji-background.png" />
-            </Grid.Background>
-
             <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
                 <StackPanel
                     VerticalAlignment="Center"
@@ -58,7 +50,7 @@
                     <Button
                         Content="Or, create a free account.."
                         HorizontalAlignment="Center"
-                        Command="{Binding RegisterCommand}"
+                        Command="{Binding GoToRegisterPageCommand}"
                         Style="{StaticResource TextButton}" />
                 </StackPanel>
             </ScrollViewer>

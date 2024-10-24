@@ -9,37 +9,30 @@ namespace WPF.Tesetto.Word.Core
         public LoginViewModel()
         {
             LoginCommand = new RelayParameterizedCommand(async (parameter) => await LoginAsync(parameter));
-            RegisterCommand = new RelayCommand(async () => await RegisterAsync());
-            GoBackToLoginCommand = new RelayCommand(async () => await GoBackToLoginAsync());
+            GoToRegisterPageCommand = new RelayCommand(async () => await GoToRegisterPageAsync());
         }
 
         public string Email { get; set; }
         public bool LoginIsRunning { get; set; }
 
         public ICommand LoginCommand { get; }
-        public ICommand RegisterCommand { get; }
+        public ICommand GoToRegisterPageCommand { get; }
         public ICommand GoBackToLoginCommand { get; }
 
         public async Task LoginAsync(object parameter)
         {
             await RunCommand(() => LoginIsRunning, async () =>
             {
-                await Task.Delay(2000);
-                var email = Email;
-                var password = (parameter as IHavePassword).SecurePassword.Unsecure();
+                await Task.Delay(1000);
+                //var email = Email;
+                //var password = (parameter as IHavePassword).SecurePassword.Unsecure();
+                Ioc.Get<ApplicationViewModel>().GoToPage(ApplicationPage.Chat);
             });
         }
 
-        public Task RegisterAsync()
+        public Task GoToRegisterPageAsync()
         {
-            Ioc.Get<ApplicationViewModel>().CurrentPage = ApplicationPage.Register;
-
-            return Task.CompletedTask;
-        }
-
-        public Task GoBackToLoginAsync()
-        {
-            Ioc.Get<ApplicationViewModel>().CurrentPage = ApplicationPage.Login;
+            Ioc.Get<ApplicationViewModel>().GoToPage(ApplicationPage.Register);
 
             return Task.CompletedTask;
         }
